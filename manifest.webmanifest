@@ -1,0 +1,8 @@
+{
+  "name": "A Great Day with Grey Eyes",
+  "short_name": "Grey Eyes",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#11151a",
+  "theme_color": "#11151a"
+}
