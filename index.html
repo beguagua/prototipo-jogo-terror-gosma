@@ -15,6 +15,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080b0c;fon
 #top{position:absolute;left:12px;right:12px;top:max(10px,env(safe-area-inset-top));display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 #brand{font-weight:900;letter-spacing:3px;font-size:13px;color:#d5ded9}#subtitle{font-size:10px;color:#9ca9a4;letter-spacing:1px;margin-top:2px}
 #health{font-size:12px;white-space:nowrap}#healthbar{width:100px;height:5px;background:#333;margin-top:5px;border-radius:5px;overflow:hidden}#healthfill{height:100%;width:100%;background:#b6c8b8;transition:width .2s}
+#fps{position:absolute;right:12px;top:max(76px,calc(env(safe-area-inset-top) + 76px));font-size:11px;letter-spacing:.5px;color:#cbd7ce;min-width:82px;text-align:center}#fps strong{font-variant-numeric:tabular-nums;color:#e9f0e9}
 #objective{position:absolute;left:12px;top:78px;max-width:245px;font-size:12px;line-height:1.4}
 #hint{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);font-size:12px;letter-spacing:1px;color:#dfe6e0;text-shadow:0 2px 4px #000;text-align:center;max-width:85%;opacity:0;transition:opacity .2s}
 #crosshair{position:absolute;left:50%;top:50%;width:6px;height:6px;border:1px solid #e2e9df;border-radius:50%;transform:translate(-50%,-50%);opacity:.75}
@@ -42,6 +43,7 @@ button{font:inherit}#begin,#restart{border:1px solid #dbe5de;background:#dbe5de;
 <div id="game"></div><div id="vignette"></div>
 <div id="hud">
  <div id="top"><div class="panel"><div id="brand">G O S M A</div><div id="subtitle">PROTÓTIPO 0.1 · SOBREVIVÊNCIA</div></div><div class="panel" id="health">VIDA <b id="hptext">100</b><div id="healthbar"><div id="healthfill"></div></div></div></div>
+ <div id="fps" class="panel">FPS <strong id="fpstext">--</strong></div>
  <div id="objective" class="panel">OBJETIVO<br><b id="objtext">Encontre pistas sobre seu cachorro.</b><div style="margin-top:5px;color:#9ba8a1">Pistas: <span id="clues">0</span>/3</div></div>
  <div id="crosshair"></div><div id="hint"></div>
  <div id="controls"><div id="lookzone"></div><div id="joy"><div id="nub"></div></div><div id="run" class="action">CORRER</div><div id="interact" class="action">USAR</div><div id="attack" class="action">ATACAR</div><div id="message"></div></div>
@@ -116,6 +118,7 @@ const dogHead=new THREE.Mesh(new THREE.SphereGeometry(.23,7,6),mat(0x987c5e));do
 for(let x of [-.14,.14]){const ear=new THREE.Mesh(new THREE.ConeGeometry(.09,.22,5),dark);ear.position.set(x,.69,-.53);dog.add(ear);}
 const dogMark=new THREE.PointLight(0xa0b3a8,1.4,5);dogMark.position.y=1.3;dog.add(dogMark);
 let joyX=0,joyY=0,joyPointer=null,lookPointer=null,lastX=0,lastY=0,keys={},lastT=0,started=false,toastTimer=0,attackCooldown=0,gameWon=false;
+let fpsFrames=0,fpsLastTime=performance.now();
 const joy=document.getElementById('joy'),nub=document.getElementById('nub'),look=document.getElementById('lookzone');
 function toast(t){const e=document.getElementById('message');e.textContent=t;e.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.style.display='none',2400)}
 function nearThing(){let best=null,dist=3.0;for(const c of clues){if(c.found)continue;const d=Math.hypot(c.g.position.x-player.x,c.g.position.z-player.z);if(d<dist){best=c;dist=d;}}
@@ -146,7 +149,9 @@ for(const ev of ['pointerup','pointercancel','lostpointercapture'])look.addEvent
 addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;if(e.key===' '){e.preventDefault();attack();}if(e.key.toLowerCase()==='e')interact();if(e.key.toLowerCase()==='shift')player.run=true;});
 addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false;if(e.key.toLowerCase()==='shift')player.run=false;});
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.25));renderer.setSize(innerWidth,innerHeight);});
-function animate(t){requestAnimationFrame(animate);const dt=Math.min((t-lastT)/1000||0,.035);lastT=t;if(started&&!player.dead){
+function animate(t){requestAnimationFrame(animate);const dt=Math.min((t-lastT)/1000||0,.035);lastT=t;
+ fpsFrames++;const fpsNow=performance.now();if(fpsNow-fpsLastTime>=500){const fps=Math.round(fpsFrames*1000/(fpsNow-fpsLastTime));document.getElementById('fpstext').textContent=String(fps);document.getElementById('fps').style.borderColor=fps>=50?'#71808066':fps>=30?'#a99c6266':'#ad666666';fpsFrames=0;fpsLastTime=fpsNow;}
+ if(started&&!player.dead){
  if(attackCooldown>0)attackCooldown-=dt;
  let sx=joyX+(keys.d?1:0)-(keys.a?1:0),sy=joyY+(keys.s?1:0)-(keys.w?1:0);const len=Math.hypot(sx,sy);if(len>1){sx/=len;sy/=len;}
  const speed=player.run?5.3:2.8;const fx=-Math.sin(player.yaw),fz=-Math.cos(player.yaw),rx=Math.cos(player.yaw),rz=-Math.sin(player.yaw);
