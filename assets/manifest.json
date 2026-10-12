@@ -1,0 +1,157 @@
+{
+  "project": "A Great Day with Grey Eyes",
+  "engine": "Babylon.js",
+  "version": "0.4.2 automatic browser cache downloader",
+  "target_complete_content_gb": 5,
+  "target_prototype_download_mb": 789,
+  "important": "These are curated official source pages, not direct file URLs. This manifest does not claim that the external assets have been downloaded or integrated.",
+  "assets": [
+    {
+      "category": "Cidade residencial",
+      "name": "Kenney City Kit Suburban",
+      "url": "https://kenney.nl/assets/city-kit-suburban",
+      "license": "CC0",
+      "priority": "essencial",
+      "notes": "Casas, cercas, árvores e entradas de garagem; estilizado, bom para prototipagem."
+    },
+    {
+      "category": "Ruas",
+      "name": "Kenney City Kit Roads",
+      "url": "https://kenney.nl/assets/city-kit-roads",
+      "license": "CC0",
+      "priority": "essencial",
+      "notes": "Estradas, barreiras, postes de luz e cercas de construção."
+    },
+    {
+      "category": "Indústria",
+      "name": "Kenney City Kit Industrial",
+      "url": "https://kenney.nl/assets/city-kit-industrial",
+      "license": "CC0",
+      "priority": "alta",
+      "notes": "Galpões e edifícios industriais para uma área posterior da campanha."
+    },
+    {
+      "category": "Interiores",
+      "name": "Kenney Building Kit",
+      "url": "https://kenney.nl/assets/building-kit",
+      "license": "CC0",
+      "priority": "alta",
+      "notes": "Paredes, pisos, portas e janelas para montar interiores."
+    },
+    {
+      "category": "Vegetação",
+      "name": "Kenney Nature Kit",
+      "url": "https://kenney.nl/assets/nature-kit",
+      "license": "CC0",
+      "priority": "alta",
+      "notes": "Árvores, pedras e folhagem; útil para parques e margens da cidade."
+    },
+    {
+      "category": "Fábrica",
+      "name": "Kenney Factory Kit",
+      "url": "https://kenney.nl/assets/factory-kit",
+      "license": "CC0",
+      "priority": "média",
+      "notes": "Equipamento e objetos industriais para missão em fábrica."
+    },
+    {
+      "category": "Cavernas / túneis",
+      "name": "Kenney Modular Cave Kit",
+      "url": "https://kenney.nl/assets/modular-cave-kit",
+      "license": "CC0",
+      "priority": "média",
+      "notes": "Kit modular para uma zona subterrânea posterior."
+    },
+    {
+      "category": "Modelos realistas",
+      "name": "Poly Haven Models",
+      "url": "https://polyhaven.com/models",
+      "license": "CC0",
+      "priority": "essencial",
+      "notes": "Escolher modelos realistas individualmente; baixar preferencialmente GLB/glTF quando disponível."
+    },
+    {
+      "category": "Materiais PBR",
+      "name": "Poly Haven Textures",
+      "url": "https://polyhaven.com/textures",
+      "license": "CC0",
+      "priority": "essencial",
+      "notes": "Concreto, asfalto, madeira, metal enferrujado, paredes e sujeira."
+    },
+    {
+      "category": "Iluminação",
+      "name": "Poly Haven HDRIs",
+      "url": "https://polyhaven.com/hdris",
+      "license": "CC0",
+      "priority": "alta",
+      "notes": "Usar HDRIs compactos/comprimidos para não exceder memória no iPad."
+    },
+    {
+      "category": "Texturas PBR",
+      "name": "ambientCG",
+      "url": "https://ambientcg.com/list?type=Material",
+      "license": "CC0",
+      "priority": "alta",
+      "notes": "Biblioteca ampla de materiais; escolha resoluções 1K/2K para mobile e 2K/4K para PC."
+    },
+    {
+      "category": "Personagens e infectados",
+      "name": "Quaternius Zombie Apocalypse Kit",
+      "url": "https://quaternius.com/packs/zombieapocalypsekit.html",
+      "license": "CC0 conforme a página do pacote",
+      "priority": "essencial",
+      "notes": "Tem personagens animados, inimigos, veículos e dois cães; estilo estilizado, não fotorrealista."
+    },
+    {
+      "category": "Personagens humanos",
+      "name": "Quaternius Universal Base Characters",
+      "url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "license": "CC0 conforme a página do pacote",
+      "priority": "alta",
+      "notes": "Personagens rigados para prototipar policial e civis; aparência estilizada."
+    },
+    {
+      "category": "Personagens animados",
+      "name": "Quaternius Ultimate Animated Character Pack",
+      "url": "https://quaternius.com/packs/ultimatedanimatedcharacter",
+      "license": "CC0 conforme a página do pacote",
+      "priority": "média",
+      "notes": "Personagens e animações; avaliar compatibilidade visual antes de usar."
+    },
+    {
+      "category": "Áudio",
+      "name": "Freesound — buscar sons CC0",
+      "url": "https://freesound.org/search/?q=creaking+door&f=license%3A%22Creative+Commons+0%22",
+      "license": "CC0 somente nos arquivos identificados como CC0",
+      "priority": "alta",
+      "notes": "Pesquisar separadamente passos, porta rangendo, vento, latidos, respiração e ruídos de criatura. Guardar o link/licença de cada arquivo."
+    },
+    {
+      "category": "Áudio ambiente",
+      "name": "Pixabay Sound Effects",
+      "url": "https://pixabay.com/sound-effects/",
+      "license": "Verificar os termos atuais e o arquivo específico",
+      "priority": "média",
+      "notes": "Alternativa para sons ambientes; não presumir que todos os arquivos tenham a mesma licença."
+    }
+  ],
+  "recommended_initial_download_order": [
+    "Kenney City Kit Suburban",
+    "Kenney City Kit Roads",
+    "Kenney Building Kit",
+    "Quaternius Zombie Apocalypse Kit",
+    "Poly Haven Textures",
+    "Poly Haven Models",
+    "Kenney Nature Kit",
+    "Kenney City Kit Industrial",
+    "Kenney Factory Kit",
+    "Poly Haven HDRIs",
+    "Freesound CC0 effects"
+  ],
+  "quality_plan": {
+    "mobile": "Use GLB/glTF, 1K/2K textures, compressed audio, small chunk sizes, limited real-time lights, LODs.",
+    "desktop": "Optional higher-resolution texture pack and additional environment props; keep assets separated by package.",
+    "offline": "Download packages in explicit user-approved batches, verify sizes/hashes, then cache local files. Browser storage can be evicted."
+  },
+  "automatic_download": "O protótipo consulta a API pública do Poly Haven e baixa arquivos diretos para Cache Storage quando o navegador permite. Pacotes de páginas externas (Kenney/Freesound) não podem ser instalados automaticamente apenas com o link da página."
+}
